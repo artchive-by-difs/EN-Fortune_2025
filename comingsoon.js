@@ -1,7 +1,7 @@
 const countdownEl = document.getElementById('countdown');
 
 // Set event start & end
-const startDate = new Date('2025-11-24T15:00:00Z'); // 22:00 WIB or 00:00 KST 30 November 2025
+const startDate = new Date('2025-11-23T15:00:00Z'); // 22:00 WIB or 00:00 KST 30 November 2025
 const endDate = new Date('2025-12-31T15:00:00Z');   // 22:00 WIB or 00:00 KST 01 January 2026
 
 function startCountdown(serverTime) {
@@ -57,4 +57,5 @@ fetch('https://worldtimeapi.org/api/timezone/Asia/Seoul')
   .then(data => startCountdown(new Date(data.utc_datetime)))
 
   .catch(() => startCountdown(new Date())); // fallback local
+
 
