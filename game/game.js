@@ -177,3 +177,13 @@ document.querySelector(".jump-padlet").onclick = () => {
   iframe.scrollIntoView({ behavior: "smooth", block: "end" });
 };
 
+const bgm = new Audio("https://raw.githubusercontent.com/artchive-by-difs/EN-Fortune_2025/main/game/assets/bgm.mp3");
+bgm.loop = true;
+bgm.volume = 0.4;
+
+// Start saat klik pertama agar browser izinkan suara
+document.addEventListener("click", () => {
+  bgm.play().catch(err => console.warn("BGM play error:", err));
+}, { once: true });
+
+
