@@ -15,7 +15,7 @@ function startCountdown(serverTime) {
     // If event ended → redirect only if NOT already on event-closed.html
     if (now >= endDate) {
       if (!currentPage.includes('event-closed.html')) {
-        window.location.href = './event-closed.html';
+        window.location.href = '/event-closed.html';
       }
       return;
     }
@@ -23,7 +23,7 @@ function startCountdown(serverTime) {
     // If event started → redirect only if NOT already in main page
     if (now >= startDate) {
       if (!currentPage.includes('/photobooth/photobooth.html')) {
-        window.location.href = './photobooth/photobooth.html';
+        window.location.href = '/photobooth/photobooth.html';
       }
       return;
     }
@@ -55,4 +55,5 @@ function startCountdown(serverTime) {
 fetch('https://worldtimeapi.org/api/timezone/Asia/Seoul')
   .then(res => res.json())
   .then(data => startCountdown(new Date(data.utc_datetime)))
+
   .catch(() => startCountdown(new Date())); // fallback local
