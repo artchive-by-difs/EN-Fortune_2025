@@ -323,7 +323,7 @@ document.getElementById("a3TemplateBtn").addEventListener("click", function () {
 });
 
 document.getElementById("a4TemplateBtn").addEventListener("click", function () {
-    window.location.href = "./game/game.html"; // Link Game
+    window.location.href = "/game/game.html"; // Link Game
 });
 
 let brightness = 100;
@@ -432,5 +432,6 @@ confirmBtn.addEventListener("click", () => {
     downloadBtn.disabled = true;
   }
 });
+
 
 
