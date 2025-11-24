@@ -1,0 +1,101 @@
+/* Reset & base */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #F0EADB;
+  color: #684D38;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 1rem;
+}
+
+.container {
+  text-align: center;
+  max-width: 500px;
+  width: 100%;
+}
+
+.container img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 0rem;
+}
+
+/* Header */
+h1 {
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  letter-spacing: 0.1em;
+}
+
+/* Event info */
+p {
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  letter-spacing: 0.05em;
+}
+
+/* Countdown container */
+#countdown {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Days - big and centered */
+#countdown .days {
+  font-size: 4.5rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  user-select: none;
+}
+
+/* Time parts below: hours, minutes, seconds in row */
+#countdown .time-parts {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  user-select: none;
+}
+
+/* Each part styling */
+#countdown .time-part {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Label below each time part */
+#countdown .time-part span.label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  margin-top: 0.25rem;
+  color: #706b68;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.25rem;
+  }
+
+  #countdown .days {
+    font-size: 3rem;
+  }
+
+  #countdown .time-parts {
+    gap: 1rem;
+    font-size: 1.2rem;
+  }
+}

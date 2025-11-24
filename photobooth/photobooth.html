@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EN-Fortune 2025 - Photobooth</title>
+    <link rel="stylesheet" href="photobooth.css">
+</head>
+<body>
+    <div class="container">
+      
+        <!-- Kiri: Camera Preview & Buttons -->
+        <div class="left">
+          <div style="display: flex; justify-content: center; align-items: center; height: auto; flex-direction: column;">
+    <img src="https://i.ibb.co.com/1fSbNJJf/header2.png" 
+         alt="header" 
+         style="width: 100%;max-width: 280px; height: auto;">
+          </div>
+          <div class="brightness-container">
+        <label for="brightness">brightness</label>
+        <input type="range" id="brightness" min="50" max="200" value="100"> </div>
+                  
+          <div class="contrast-container">
+        <label for="contrast">contrast</label>
+        <input type="range" id="contrast" min="50" max="200" value="100"></div>
+                    
+            <div class="cameraContainer">
+                <video id="camera" width="300" height="200" autoplay></video>
+                <img id="frameOverlay">
+                <p id="countdown"></p>
+                </div>
+            <div id="frameSelection">
+  <button id="selectA">snow</button>
+  <button id="selectB">latte</button>
+  <button id="selectC">cocoa</button>
+</div>
+            <div class="controls">
+                <button id="startBtn">read me first!</button>
+                <button id="snapBtn" disabled>take a photo <3</button>
+            </div>
+
+            <!-- Template color selection moved here -->
+            <div class="layout">
+                <h2>what you want to try?</h2>
+               <div class="button-group">
+                <button id="a1TemplateBtn">take another photo!</button>
+                <button id="a2TemplateBtn">baking class!</button>
+                <button id="a3TemplateBtn">today's jam!</button>
+                <button id="a4TemplateBtn">free fortune cookies!</button>
+               </div>
+            </div>
+        </div>
+            
+           
+        <!-- Kanan: Hasil Foto dan Preview -->
+        <div class="right">
+          <div id="mv-section">
+  <button id="toggle-mv"> wanna rewind the memories?<br>>>> Tap for MV picks <<<</button>
+
+  <div id="mv-gallery" style="display: none;">
+    <div class="video-wrapper">
+      <iframe src="https://www.youtube.com/embed/nQ6wLuYvGd4?si=RMAPAmM96POfZZ2t" width="250" height="auto" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+    <div class="video-wrapper">
+      <iframe src="https://www.youtube.com/embed/Fc7-Oe0tj5k?si=YHATutDNjWKKnRMy" width="250" height="auto" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+    <div class="video-wrapper">
+      <iframe src="https://www.youtube.com/embed/6IRsW_TkyVA?si=rSqZi7MiOaEg6ZSk" width="250" height="auto" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+    <div class="video-wrapper">
+      <iframe src="https://www.youtube.com/embed/osmHArcf_aE?si=0sWhZ1GckkUfRmrX" width="250" height="auto" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+    <div class="video-wrapper">
+      <iframe src="https://www.youtube.com/embed/QMlNLo74mOw?si=FCWP32Jasfn16hCI" width="250" height="auto" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>    <div class="video-wrapper">
+      <iframe src="https://www.youtube.com/embed/wXFLzODIdUI?si=j0vfm5riidK2d0uc" width="250" height="auto" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+    <div class="video-wrapper">
+      <iframe src="https://www.youtube.com/embed/qedonJosQ3g?si=u6oPSnVBv7QvKUZn" width="250" height="auto" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>    
+    <div class="video-wrapper">
+      <iframe src="https://www.youtube.com/embed/FPDYeRk2PO8?si=XM--ZqeOa7AfRcRG" width="250" height="auto" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+    <div class="video-wrapper">
+      <iframe src="https://www.youtube.com/embed/rDolt3jJRsM?si=ZAY96QISE0hrHGVc" width="250" height="auto" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>    <div class="video-wrapper">
+      <iframe src="https://www.youtube.com/embed/a2Zqdo9RbNs?si=j0ozeg23Kh3dFsOH" width="250" height="auto" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+</div>
+            <div class="resultContainer">
+                <h2>🥠 pick up here 🥠</h2>
+                <div id="finalPhotos" class="finalPhotos"></div>
+            </div>
+
+            <!-- Tombol download tetap di kanan -->
+            <div class="download-container">
+                <button id="downloadBtn" disabled>print!</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="photobooth.js" defer></script>
+     
+          <!-- Modal -->
+<div id="popupModal" class="modal">
+    <div class="modal-content">
+        <h2>✨ Quick Photo Booth Guide! ✨</h2>
+        <p>₁ ✧ For the best experience, use a desktop! 🖥️🤍</p>
+        <p>₂ ✧ On mobile/tablet? 📱 Switch to desktop mode & go landscape.<br>
+   OR stay in portrait and scroll like you’re unwrapping a cookie 🍪</p>
+        <p>₃ ✧ Pick your flavour — Snow Sugar, Latte, or Cocoa!<br>
+   (Please wait for all previews below to load ✨)</p>
+        <p>₄ Tap “take a photo”! ⏳📷 (4 frames • 3-sec countdown!)<br>
+   ↳ No retake — but you can always bake a new batch 💛</p></p>
+        <p>₅ ✧ Download with “print!” 💾✨</p>
+        <p>₆ ✧ Try the other buttons & have fun! ૮ ˶ᵔ ᵕ ᵔ˶ ა</p>
+        <div class="popup-frame-container">
+  <!-- Frame A -->
+  <img src="https://i.ibb.co.com/qM1NvVyz/framecut-snow-1.png" alt="frameA_1">
+  <img src="https://i.ibb.co.com/YB4L26M1/framecut-snow-2.png" alt="frameA_2">
+  <img src="https://i.ibb.co.com/RGtWPwPf/framecut-snow-3.png" alt="frameA_3">
+  <img src="https://i.ibb.co.com/LD4L3945/framecut-snow-4.png" alt="frameA_4">
+  <img src="https://i.ibb.co.com/3YjqwSCG/framecut-snow-5.png" alt="frameA_5">
+
+  <!-- Frame B -->
+  <img src="https://i.ibb.co.com/gZzMqBbB/framecut-latte-1.png" alt="frameB_1">
+  <img src="https://i.ibb.co.com/XZd0ML0f/framecut-latte-2.png" alt="frameB_2">
+  <img src="https://i.ibb.co.com/S4RXv4Xx/framecut-latte-3.png" alt="frameB_3">
+  <img src="https://i.ibb.co.com/KcGT9HWq/framecut-latte-4.png" alt="frameB_4">
+  <img src="https://i.ibb.co.com/WNG2dcWt/framecut-latte-5.png" alt="frameB_5">
+
+  <!-- Frame C -->
+  <img src="https://i.ibb.co.com/Wvr2pF1t/framecut-cocoa-1.png" alt="frameC_1">
+  <img src="https://i.ibb.co.com/HTCgHMkj/framecut-cocoa-2.png" alt="frameC_2">
+  <img src="https://i.ibb.co.com/WNSq6wG9/framecut-cocoa-3.png" alt="frameC_3">
+  <img src="https://i.ibb.co.com/Q33VCMw1/framecut-cocoa-4.png" alt="frameC_4">
+  <img src="https://i.ibb.co.com/W4DgrL7t/framecut-cocoa-5.png" alt="frameC_5">
+</div>
+        <p> Capture your moment — sweet fortunes & happy 5th Enniversary! <br> ⋆˖⁺‧₊ #EN_Fortune2025 ₊‧⁺˖⋆</p>
+        <button id="confirmBtn">Got it!</button>
+    </div>
+</div>
+
+        <script src="https://www.youtube.com/iframe_api"></script>
+        <div id="yt-player" style="width:0; height:0; overflow:hidden;"></div>
+       
+<script>
+  // Fungsi untuk memblokir shortcut tertentu dan F12
+  function disableShortcut(e) {
+    const key = e.key.toLowerCase();
+    const blockedKeys = ['u', 'c', 's', 'a', 'p'];
+
+    if (
+      (e.ctrlKey && blockedKeys.includes(key)) ||                 // Ctrl+U, C, S, A, P
+      (e.ctrlKey && e.shiftKey && key === 'i') ||                // Ctrl+Shift+I
+      (key === 'f12')                                             // F12
+    ) {
+      e.preventDefault();
+      alert("⚠️ Hi there, curious one!\n\n" +
+      "This site is a personal project (still a work in progress).\n" +
+      "Please don’t inspect, copy, or... judge the code (lol).\n" + "Thanks for understanding.\n\n" +
+      "Anything? Feel free to DM @sunoofdawn on X");
+      return false;
+    }
+  }
+
+  // Blokir shortcut dan F12
+  document.addEventListener('keydown', disableShortcut);
+
+  // Blokir klik kanan
+  document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+    alert("⚠️ Hi there, curious one!\n\n" +
+      "This site is a personal project (still a work in progress).\n" +
+      "Please don’t inspect, copy, or... judge the code (lol).\n" + "Thanks for understanding.\n\n" +
+      "Anything? Feel free to DM @sunoofdawn on X");
+  });
+</script>
+        
+            <!-- Tambahkan ini untuk Vercel Analytics -->
+      <script defer src="/_vercel/insights/script.js"></script>
+
+            <!-- Tambahkan ini untuk Vercel Speed Insight -->
+      <script defer src="/_vercel/speed-insights/script.js"></script>
+
+      <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RBHQDQY3EW"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RBHQDQY3EW');
+</script>
+       
+</body>
+</html>

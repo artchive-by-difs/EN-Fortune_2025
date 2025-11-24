@@ -1,0 +1,264 @@
+/* ---- Global Page Style ---- */
+body {
+  font-family: "Poppins", sans-serif;
+  background: #f6faff; /* soft baby blue */
+  padding: 10px;
+  margin: 0;
+  display: block;
+  justify-content: center;
+  align-items: flex-start; /* memastikan semua anak di tengah halaman */
+  min-height: 100vh;
+  color: #5b4636; /* soft brown */
+}
+
+/* ---- Wrapper so everything stays centered ---- */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+h1 {
+  text-align: center !important;
+  font-size: 20px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+/* ---- Grid ---- */
+.grid {
+  width: min(90vw, 350px);
+  aspect-ratio: 1 / 1; 
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 12px;
+}
+
+/* ---- Cell ---- */
+.cell {
+  background: #fffdf9; /* creamy bakery white */
+  border: 2px solid #f1e2d3;
+  border-radius: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: clamp(28px, 6vw, 40px); /* RESPONSIVE emoji size */
+  transition: box-shadow 0.2s ease, background 0.2s;
+}
+
+/* Highlight (steady) */
+.cell.highlight {
+  background: #ffe8a3; 
+  box-shadow: 0 0 14px rgba(255, 185, 80, 0.7);
+  border-color: #ffb648;
+}
+
+/* ---- Center Button ---- */
+.center-btn {
+  grid-column: 2;
+  grid-row: 2;
+  border-radius: 50%;
+  padding: 18px;
+  border: none;
+  cursor: pointer;
+
+  background: #f7d8a7; /* caramel-latte */
+  color: #5b4636;
+  font-size: clamp(14px, 4vw, 18px);
+  box-shadow: 0 4px 10px rgba(80, 60, 40, 0.15);
+  font-weight: 600;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.center-btn:hover:enabled {
+  background: #f1c88b;
+  transform: scale(1.06);
+}
+
+.center-btn:disabled {
+  background: #e6dfd6;
+  color: #9e9187;
+  cursor: not-allowed;
+}
+
+/* ---- Try Again Button ---- */
+#tryButton {
+  padding: 8px 14px;
+  background: #a7ceff; /* soft baby blue latte */
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow: 0 4px 8px rgba(65, 110, 160, 0.15);
+  transition: background 0.2s, transform 0.2s;
+}
+
+#tryButton:hover:enabled {
+  background: #8fc0ff;
+  transform: scale(1.05);
+}
+
+#tryButton:disabled {
+  background: #cfd8e2;
+  cursor: not-allowed;
+}
+
+/* ---- Fortune Message Box ---- */
+#fortuneText {
+  margin-top: 14px;
+  background: #ffffffaa;
+  padding: 14px 18px;
+  border-radius: 12px;
+  font-size: 14px;
+  width: min(85vw, 260px);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.07);
+  font-style: italic;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  white-space: pre-line;   /* penting untuk enter (\n) dari JS */
+}
+#fortuneText, 
+#fortuneText * {
+  text-align: center !important;
+}
+
+/* Wrap fortune text + try again so it stays stacked */
+.fortune-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px; /* jarak kecil yang rapi */
+}
+
+.cell-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  user-select: none;
+  pointer-events: none;
+}
+
+
+/* ================================
+   PADLET EMBED (CUTE THEME)
+   ================================ */
+
+.padlet-wrapper {
+  width: min(90vw, 450px);
+  background: #ffffffdd;
+  border: 2px solid #f1e2d3;
+  border-radius: 16px;
+  padding: 14px;
+  margin-top: 0px;
+  box-shadow: 0 4px 10px rgba(80, 60, 40, 0.10);
+  backdrop-filter: blur(3px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Iframe */
+.padlet-wrapper iframe {
+  width: 100%;
+  height: 520px; /* tetap */
+  border: none;
+  border-radius: 12px;
+  background: #faf7f2;
+  box-shadow: inset 0 0 6px rgba(0,0,0,0.08);
+}
+
+
+/* Credit */
+.padlet-credit {
+  opacity: 0.65;  
+  transition: opacity 0.2s;
+}
+
+.padlet-credit:hover {
+  opacity: 1;
+}
+
+.padlet-credit img {
+  width: 110px;
+  height: auto;
+  pointer-events: none;
+}
+
+.jump-padlet {
+  background: #ffdca9;
+  color: #5b4636;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow: 0 4px 8px rgba(65, 110, 160, 0.15);
+  transition: background 0.2s, transform 0.2s;
+}
+
+.jump-padlet:hover {
+  background: #f7c98c;  
+  transform: scale(1.05);
+}
+
+/* =========================================
+   FIX HP PORTRAIT — LESS MARGIN, WIDER AREA
+   ========================================= */
+
+@media (max-width: 480px) {
+
+  /* ========== GLOBAL LAYOUT FIX ========== */
+  body {
+    padding: 0 !important;
+    margin: 0;
+  }
+
+  .container {
+    width: 100%;
+    padding: 0 12px !important; /* GAP KIRI-KANAN DIPERSAMAKAN */
+    margin-bottom: 20px !important;
+    box-sizing: border-box;
+  }
+
+  /* ========== GRID (GAME) ========== */
+  .grid {
+    width: 100% !important;
+    max-width: 450px !important;
+    margin: 0 auto;
+    gap: 10px !important;
+    box-sizing: border-box!important;
+    padding: 0 0px !important;
+  }
+
+  .grid .cell {
+    aspect-ratio: 1 / 1;
+    height: auto;
+    width: calc(28vw) !important;
+    width: calc(28vw) !important;
+  }
+
+  /* ========== PADLET ========== */
+  .padlet-wrapper {
+    width: 100% !important;
+    max-width: 450px;
+    margin: 0 auto !important;
+    padding: 12px !important;
+    box-sizing: border-box;
+  }
+
+  .padlet-wrapper iframe {
+    width: 100% !important;
+    height: 550px !important;
+  }
+}
