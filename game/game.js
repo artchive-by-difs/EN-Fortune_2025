@@ -187,3 +187,23 @@ document.addEventListener("click", () => {
 }, { once: true });
 
 
+// --- Google Analytics Event Tracking untuk Game --- //
+
+function trackEvent(id, category, label) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.addEventListener("click", () => {
+    gtag('event', 'button_click', {
+      event_category: category,
+      event_label: label
+    });
+  });
+}
+
+// Tombol-tombol yang mau di-track
+trackEvent("spinButton", "game", "spin");
+trackEvent("tryButton", "game", "retry");
+trackEvent("fortuneText", "game", "view_fortune");
+
+
+
