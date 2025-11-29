@@ -187,23 +187,32 @@ document.addEventListener("click", () => {
 }, { once: true });
 
 
-// --- Google Analytics Event Tracking untuk Game --- //
-
-function trackEvent(id, category, label) {
-  const el = document.getElementById(id);
-  if (!el) return;
-  el.addEventListener("click", () => {
-    gtag('event', 'button_click', {
-      event_category: category,
-      event_label: label
+// Function for GA tracking
+function trackButtonClick(id, category, label) {
+  const btn = document.getElementById(id);
+  if (btn) {
+    btn.addEventListener('click', () => {
+      gtag('event', 'button_click', {
+        event_category: category,
+        event_label: label
+      });
+      console.log("Tracked:", label); // buat ngecek di console
     });
-  });
+  }
 }
 
-// Tombol-tombol yang mau di-track
-trackEvent("spinButton", "game", "spin");
-trackEvent("tryButton", "game", "retry");
-trackEvent("fortuneText", "game", "view_fortune");
+trackButtonClick('spinButton', 'game', 'spin');
+trackButtonClick('tryButton', 'game', 'retry');
 
+const padletBtn = document.querySelector('.jump-padlet');
+if (padletBtn) {
+  padletBtn.addEventListener('click', () => {
+    gtag('event', 'button_click', {
+      event_category: 'game',
+      event_label: 'padlet_jump'
+    });
+    console.log("Tracked: padlet_jump");
+  });
+}
 
 
