@@ -433,6 +433,43 @@ confirmBtn.addEventListener("click", () => {
   }
 });
 
+// --- Google Analytics Button Tracking ---
+function trackButtonClick(id, category, label) {
+  const btn = document.getElementById(id);
+  if (btn) {
+    btn.addEventListener("click", () => {
+      gtag('event', 'button_click', {
+        event_category: category,
+        event_label: label
+      });
+    });
+  }
+}
+
+/* MAIN BUTTONS */
+trackButtonClick('startBtn',      'interaction', 'start_readme');
+trackButtonClick('snapBtn',       'interaction', 'take_photo');
+
+/* FRAME SELECTION */
+trackButtonClick('selectA',       'frame', 'snow');
+trackButtonClick('selectB',       'frame', 'latte');
+trackButtonClick('selectC',       'frame', 'cocoa');
+
+/* TEMPLATE BUTTONS */
+trackButtonClick('a1TemplateBtn', 'template', 'retake_photo');
+trackButtonClick('a2TemplateBtn', 'template', 'baking_class');
+trackButtonClick('a3TemplateBtn', 'template', 'todays_jam');
+trackButtonClick('a4TemplateBtn', 'template', 'fortune_cookies');
+
+/* MV TOGGLE */
+trackButtonClick('toggle-mv',     'interaction', 'toggle_mv');
+
+/* DOWNLOAD */
+trackButtonClick('downloadBtn',   'download', 'print');
+
+/* MODAL CONFIRM */
+trackButtonClick('confirmBtn',    'interaction', 'confirm_modal');
+
 
 
 
